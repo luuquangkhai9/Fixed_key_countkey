@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+elasticsearch==8.10.1
+python-dotenv
+pydantic
+numpy
+pandas
+fuzzywuzzy
+requests
+redis
+

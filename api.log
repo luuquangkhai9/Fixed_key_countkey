@@ -1,0 +1,99 @@
+2025-09-23 17:45:29,626 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-23 17:45:29,638 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-23 17:45:29,640 - INFO - Connected to Elasticsearch.
+2025-09-23 17:46:41,768 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/23/2025', 'end_date': '09/23/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': [], 'tenancy_ids': ['A05']}
+2025-09-23 17:47:11,997 - INFO - Elasticsearch query to key-osint1-current completed in 4.09 seconds.
+2025-09-23 17:49:47,757 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-23 17:49:47,758 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-23 17:49:47,759 - INFO - Connected to Elasticsearch.
+2025-09-23 17:50:04,646 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/23/2025', 'end_date': '09/23/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-23 17:50:29,812 - INFO - Elasticsearch query to key-osint1-current completed in 15.12 seconds.
+2025-09-23 17:51:24,449 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-23 17:51:24,451 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-23 17:51:24,454 - INFO - Connected to Elasticsearch.
+2025-09-23 17:52:18,653 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/23/2025', 'end_date': '09/23/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-23 17:52:57,108 - INFO - Elasticsearch query to key-osint1-current completed in 0.45 seconds.
+2025-09-24 14:00:57,132 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-24 14:00:57,135 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-24 14:00:57,136 - INFO - Connected to Elasticsearch.
+2025-09-24 16:35:46,749 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-24 16:35:46,756 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-24 16:35:46,758 - INFO - Connected to Elasticsearch.
+2025-09-24 16:36:38,741 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/24/2025', 'end_date': '09/24/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-24 16:36:49,469 - INFO - Elasticsearch query to key-osint1-current completed in 0.94 seconds.
+2025-09-24 16:38:38,081 - INFO - /search_keywords completed successfully in 120.09 seconds.
+2025-09-26 11:39:48,053 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-26 11:39:48,066 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-26 11:39:48,068 - INFO - Connected to Elasticsearch.
+2025-09-26 11:48:51,329 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-26 11:48:51,331 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-26 11:48:51,333 - INFO - Connected to Elasticsearch.
+2025-09-26 11:50:14,483 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/26/2025', 'end_date': '09/26/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-26 11:50:33,166 - INFO - Elasticsearch query to key-osint1-current completed in 3.14 seconds.
+2025-09-26 11:51:04,053 - INFO - /search_keywords completed successfully in 50.60 seconds.
+2025-09-26 11:53:57,117 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/26/2025', 'end_date': '09/26/2025', 'type_top': 'trend', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-26 11:56:03,597 - INFO - Elasticsearch query to key-trend-current completed in 0.80 seconds.
+2025-09-29 14:10:47,715 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-29 14:10:47,722 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-29 14:10:47,724 - INFO - Connected to Elasticsearch.
+2025-09-29 15:41:15,766 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/29/2025', 'end_date': '09/29/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-29 15:41:22,073 - INFO - Elasticsearch query to key-osint1-current completed in 0.16 seconds.
+2025-09-29 15:42:32,854 - INFO - /search_keywords completed successfully in 77.50 seconds.
+2025-09-29 15:43:10,711 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/29/2025', 'end_date': '09/29/2025', 'type_top': 'trend', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-29 15:43:23,901 - INFO - Elasticsearch query to key-trend-current completed in 1.38 seconds.
+2025-09-30 09:44:49,190 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 09:44:49,200 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 09:44:49,204 - INFO - Connected to Elasticsearch.
+2025-09-30 09:45:55,406 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 09:46:06,026 - INFO - Elasticsearch query to key-osint1-current completed in 0.12 seconds.
+2025-09-30 09:48:52,414 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 09:48:52,415 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 09:48:52,416 - INFO - Connected to Elasticsearch.
+2025-09-30 09:50:48,630 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 09:51:31,719 - INFO - Elasticsearch query to key-osint1-current completed in 2.37 seconds.
+2025-09-30 09:52:33,572 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 09:52:33,574 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 09:52:33,575 - INFO - Connected to Elasticsearch.
+2025-09-30 09:53:09,503 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 09:53:40,031 - INFO - Elasticsearch query to key-osint1-current completed in 0.63 seconds.
+2025-09-30 09:53:58,398 - INFO - /search_keywords completed successfully in 50.22 seconds.
+2025-09-30 09:57:50,558 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'trend', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 09:58:31,687 - INFO - Elasticsearch query to key-trend-current completed in 9.02 seconds.
+2025-09-30 10:04:20,895 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 10:04:20,897 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 10:04:20,898 - INFO - Connected to Elasticsearch.
+2025-09-30 10:05:54,948 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:05:55,937 - INFO - Elasticsearch query to key-osint1-current completed in 0.02 seconds.
+2025-09-30 10:05:59,316 - INFO - /search_keywords completed successfully in 4.37 seconds.
+2025-09-30 10:06:16,073 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'trend', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:06:16,764 - INFO - Elasticsearch query to key-trend-current completed in 0.01 seconds.
+2025-09-30 10:06:37,902 - INFO - /search_keywords completed successfully in 21.83 seconds.
+2025-09-30 10:07:00,573 - INFO - /search_hashtag endpoint called with request: {'hashtag': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:07:00,590 - INFO - Elasticsearch query to key-osint1-current - hashtag completed in 0.02 seconds.
+2025-09-30 10:07:00,590 - INFO - /search_hashtag completed successfully in 0.02 seconds.
+2025-09-30 10:11:27,185 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:11:28,008 - INFO - Elasticsearch query to key-osint1-current completed in 0.02 seconds.
+2025-09-30 10:11:31,162 - INFO - /search_keywords completed successfully in 3.98 seconds.
+2025-09-30 10:11:36,577 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'trend', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:11:37,758 - INFO - Elasticsearch query to key-trend-current completed in 0.02 seconds.
+2025-09-30 10:11:37,763 - INFO - /search_keywords completed successfully in 1.19 seconds.
+2025-09-30 10:12:34,414 - INFO - /search_hashtag endpoint called with request: {'hashtag': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:12:35,782 - INFO - Elasticsearch query to key-osint1-current - hashtag completed in 0.02 seconds.
+2025-09-30 10:45:45,888 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 10:45:45,891 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 10:45:45,892 - INFO - Connected to Elasticsearch.
+2025-09-30 10:47:02,733 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'popular', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:47:04,029 - INFO - Elasticsearch query to key-osint1-current completed in 0.03 seconds.
+2025-09-30 10:47:04,870 - INFO - /search_keywords completed successfully in 2.52 seconds.
+2025-09-30 10:47:23,348 - INFO - /search_keywords endpoint called with request: {'keyword': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'type_top': 'trend', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:47:31,332 - INFO - Elasticsearch query to key-trend-current completed in 0.30 seconds.
+2025-09-30 10:47:35,972 - INFO - /search_keywords completed successfully in 13.22 seconds.
+2025-09-30 10:48:01,428 - INFO - /search_hashtag endpoint called with request: {'hashtag': '', 'type': ['media', 'facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'reddit'], 'start_date': '09/30/2025', 'end_date': '09/30/2025', 'page': 1, 'page_size': 1000000, 'topic_ids': ['all'], 'tenancy_ids': ['A05']}
+2025-09-30 10:48:06,220 - INFO - Elasticsearch query to key-osint1-current - hashtag completed in 0.02 seconds.
+2025-09-30 10:48:08,054 - INFO - /search_hashtag completed successfully in 7.05 seconds.
+2025-09-30 10:57:45,335 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 10:57:45,338 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 10:57:45,340 - INFO - Connected to Elasticsearch.
+2025-09-30 11:05:14,215 - INFO - Loaded whitelist from white_list.txt. Total items: 32
+2025-09-30 11:05:14,217 - INFO - Loaded whitelist from black_list.txt. Total items: 292
+2025-09-30 11:05:14,218 - INFO - Connected to Elasticsearch.

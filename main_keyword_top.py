@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 from main_query_es import  query_keyword_with_trend
 from collections import defaultdict
 
+from get_topic_kw import query_topic_id_grouped_by_tenant
+
 # def CheckBig(arrcheck):
 #     min_value = min(arrcheck)
 #     if min_value < 1:
@@ -137,15 +139,17 @@ def Check(keywordtop):
 
     return sorted_keywords
 def check_big2(results, keyword, topic_id):
-    actual_days = len(results)
-    missing_days = 20 - actual_days 
+    #actual_days = len(results)
+    #missing_days = 20 - actual_days 
     
     count_out_top20 = 0
     count_in_top6 = 0
     
     for record in results:
-        topic_data = record['_source']['topic_ids'].get(topic_id, {'keywords_top': []})
-        keywords = [kw_info['keyword'] for kw_info in topic_data['keywords_top']]
+        if record['topic_id']!= topic_id:
+            continue
+        topic_data = record['keywords_top']
+        keywords = [kw_info['keyword'] for kw_info in topic_data]
         try:
             if keyword not in keywords[:20]:
                 count_out_top20 += 1
@@ -159,7 +163,7 @@ def check_big2(results, keyword, topic_id):
             if keyword in keywords:
                 count_in_top6 += 1
 
-    count_out_top20 += missing_days
+    #count_out_top20 += missing_days
 
     if count_out_top20 >= 3 and count_in_top6 >= 4:
         return True
@@ -388,12 +392,34 @@ def filter_keywords_all_words_no_sort(keyword_list):
 #     }
     
 def calculate_top_keywords_with_topic_2_es(es, input_date, data, index_name, platform):
+
+    try:
+
+        list_topic =  query_topic_id_grouped_by_tenant()
+        topic_to_tenants = {}
+
+        #for item in list_topic:
+        #    tenant = item["tenant"]
+        #    for topic in item["topic_id"]:
+        #        topic_to_tenants.setdefault(topic, set()).add(tenant)
+
+        # Lấy các topic có mặt ở >= 2 tenant
+        #duplicates = {topic: tenants for topic, tenants in topic_to_tenants.items() if len(tenants) > 1}
+
+        #print(duplicates)
+    except:
+        print(f"error get topic from Mongodb")    
+        return 
+
     try:
         with open('blacklist_hashtag.txt', 'r', encoding='utf-8') as f:
             blacklist = set(line.strip() for line in f if line.strip())
     except Exception as e:
         print(f"Error reading blacklist file: {e}")
         blacklist = set()
+
+
+
 
     date_format = "%m/%d/%Y"
     date_obj = datetime.strptime(input_date, date_format)
@@ -402,6 +428,7 @@ def calculate_top_keywords_with_topic_2_es(es, input_date, data, index_name, pla
     keyword_counts = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
     hashtag_counts = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
     topic_article_counts = defaultdict(lambda: defaultdict(int))
+
     test_topic = []
     for item in data:
         keywords_field = 'keyword' if item['_index'] == 'posts' else 'keywords'
@@ -413,31 +440,43 @@ def calculate_top_keywords_with_topic_2_es(es, input_date, data, index_name, pla
 
         tenancy_ids = item['_source'].get('tenancy_ids', [])
         topic_ids = item['_source'].get('topic_id', [])
+        #if not tenancy_ids or not topic_ids:
+        #    continue
         test_topic.extend(topic_ids)
         for tenancy_id in tenancy_ids:
             topic_article_counts[tenancy_id]["all"] += 1
+            result_topic = []
+            for itemc in list_topic:
+                if itemc["tenant"] == tenancy_id:
+                    result_topic.extend(itemc["topic_id"])
+                    break
+
             for topic_id in topic_ids:
-                topic_article_counts[tenancy_id][topic_id] += 1
+                if topic_id in result_topic:
+                    topic_article_counts[tenancy_id][topic_id] += 1
 
             for keyword in item['_source'].get(keywords_field, []):
                 if len(keyword) > 2:
                     keyword_counts[tenancy_id]["all"][keyword] += 1
                     for topic_id in topic_ids:
-                        keyword_counts[tenancy_id][topic_id][keyword] += 1
+                        if topic_id in result_topic:
+                            keyword_counts[tenancy_id][topic_id][keyword] += 1
 
             for hashtag in item['_source'].get(hashtags_field, []):
                 if len(hashtag) > 2 and hashtag not in blacklist:
                     hashtag_counts[tenancy_id]["all"][hashtag] += 1
                     for topic_id in topic_ids:
-                        hashtag_counts[tenancy_id][topic_id][hashtag] += 1
+                        if topic_id in result_topic:
+                            hashtag_counts[tenancy_id][topic_id][hashtag] += 1
 
     print(f"Total topics found: {len(set(test_topic))}")
     arr_key_hash = []
 
     for tenancy_id in topic_article_counts:
         for topic_id in topic_article_counts[tenancy_id]:
-            total_articles = topic_article_counts[tenancy_id][topic_id]
-
+            #ndc
+            #total_articles = topic_article_counts[tenancy_id][topic_id]
+            total_articles = topic_article_counts[tenancy_id]["all"]
             keyword_percentages = [
                 {"keyword": keyword, "percentage": (count / total_articles) * 100, "record": count}
                 for keyword, count in keyword_counts[tenancy_id][topic_id].items()
@@ -551,7 +590,7 @@ def calculate_top_keywords_with_trend_logic_topic(input_date, es, historical_dat
 
 
     # Truy vấn dữ liệu 20 ngày cho check_big2
-    start_date_str_big = (input_datetime - timedelta(days=19)).strftime("%m_%d_%Y")
+    start_date_str_big = (input_datetime - timedelta(days=9)).strftime("%m_%d_%Y")
 
     body={
     "query": {
@@ -576,77 +615,86 @@ def calculate_top_keywords_with_trend_logic_topic(input_date, es, historical_dat
     
 }
     #ndc
-    #results = query_keyword_with_trend(es,historical_data_index,body)
-    results= []
+    results = query_keyword_with_trend(es,historical_data_index,body)
+    results2 = []
+
+    for keyword_day in results:
+        if "keywords_top" not in keyword_day:
+            continue
+        results2.append(keyword_day)
+    #results= []
 
 
     results_by_tenancy = {}
     arr_key_trend = []
-    if len(daily_keywords) == 10:
-        historical_percentages = {}
+    if len(daily_keywords) == 7:
+        historical_percentages = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [0]*7)))
         for day_keyword in daily_keywords:
             for keywords in day_keyword:
-                for keyword_info in keywords.get('keywords_top', [])[:640]:
+                tenant_id_trend = keywords['tenant_id']
+                topic_id_trend = keywords['topic_id']
+                for keyword_info in keywords.get('keywords_top', [])[:100]:
                     keyword = keyword_info['keyword'] 
-                    if keyword not in historical_percentages:
-                        historical_percentages[keyword] = {}
-                    if topic_id not in historical_percentages[keyword]:
-                        historical_percentages[keyword][topic_id] = [0] * 7
+                    if keyword not in historical_percentages[tenant_id_trend][topic_id_trend]:
+                        historical_percentages[tenant_id_trend][topic_id_trend][keyword] = [0] * 7
                     index = (input_datetime - datetime.strptime(day_keyword[0]['date'], "%m_%d_%Y")).days
-                    historical_percentages[keyword][topic_id][6 - index] = keyword_info['percentage']
+                    historical_percentages[tenant_id_trend][topic_id_trend][keyword][6 - index] = keyword_info['percentage']
                 
 
+        for keywords in current_day_keywords:
+            keywordtop_for_check = [
+                {
+                    "keyword": keyword_info['keyword'],
+                    "percentage": historical_percentages[keywords['tenant_id']][keywords['topic_id']][keyword_info['keyword']],
+                    "record": keyword_info["record"],
+                    "score": keyword_info.get("score", 0),
+                    # "isTrend": keyword_info.get("isTrend", False)
+                }
+                for keyword_info in keywords.get('keywords_top', [])[:100]
+            ]
 
+            sorted_keywords = Check(keywordtop_for_check)
+            top_keywords, top_keywords_big = [], []
+            un_top_keywords, un_top_keywords_2, black_keywords = [], [], []
+            top_10_current_day_keywords = [kw_info['keyword'] for kw_info in keywords.get('keywords_top', [])[:4]]
 
-        for tenancy_id, topic_dict in current_day_keywords[0]['topic_ids'].items():
-            for topic_id, topic_data in topic_dict.items():
-                keywordtop_for_check = [
-                    {
-                        "keyword": keyword_info['keyword'],
-                        "percentage": historical_percentages.get(keyword_info['keyword'], {}).get(topic_id, [0] * 7),
-                        "record": keyword_info["record"],
-                        "score": keyword_info.get("score", 0),
-                        # "isTrend": keyword_info.get("isTrend", False)
-                    }
-                    for keyword_info in topic_data.get('keywords_top', [])[:640]
-                ]
-
-                sorted_keywords = Check(keywordtop_for_check)
-                top_keywords, top_keywords_big = [], []
-                un_top_keywords, un_top_keywords_2, black_keywords = [], [], []
-                top_10_current_day_keywords = [kw_info['keyword'] for kw_info in topic_data.get('keywords_top', [])[:4]]
-
-                for kw_dict in sorted_keywords:
-                    if is_not_blackword(kw_dict['keyword']):
-                        topic_specific_percentages = historical_percentages[kw_dict['keyword']].get(topic_id, [0] * 7)
-                        if check_big2(results, kw_dict['keyword'], topic_id):
-                            top_keywords_big.append(kw_dict)
-                            kw_dict['isTrend'] = True
-                        elif is_keyword_selected(kw_dict['keyword'], {topic_id: topic_specific_percentages}, sorted_keywords, input_date_str):
-                            kw_dict['isTrend'] = True
-                            if '_' in kw_dict['keyword'] or kw_dict['keyword'] in top_10_current_day_keywords:
-                                top_keywords.append(kw_dict)
-                            else:
-                                un_top_keywords.append(kw_dict)
+            for kw_dict in sorted_keywords:
+                if is_not_blackword(kw_dict['keyword']):
+                    topic_specific_percentages = historical_percentages[keywords['tenant_id']][keywords['topic_id']][kw_dict['keyword']]
+                    if check_big2(results2, kw_dict['keyword'], keywords['topic_id']):
+                        top_keywords_big.append(kw_dict)
+                        kw_dict['isTrend'] = True
+                    elif is_keyword_selected(kw_dict['keyword'], {keywords['topic_id']: topic_specific_percentages}, sorted_keywords, input_date_str):
+                        kw_dict['isTrend'] = True
+                        if '_' in kw_dict['keyword'] or kw_dict['keyword'] in top_10_current_day_keywords:
+                            top_keywords.append(kw_dict)
                         else:
-                            un_top_keywords_2.append(kw_dict)
-                            kw_dict['isTrend'] = False
+                            un_top_keywords.append(kw_dict)
                     else:
-                        black_keywords.append(kw_dict)
+                        un_top_keywords_2.append(kw_dict)
                         kw_dict['isTrend'] = False
+                else:
+                    black_keywords.append(kw_dict)
+                    kw_dict['isTrend'] = False
 
-                final_keywords = (
+            final_keywords = (
                     top_keywords[:8] + top_keywords_big + top_keywords[8:400] +
                     un_top_keywords + un_top_keywords_2 + top_keywords[400:] + black_keywords
                     if len(top_keywords) > 400
                     else top_keywords[:8] + top_keywords_big + top_keywords[8:] +
                          un_top_keywords + un_top_keywords_2 + black_keywords
                 )
+            document_id = f"trend_{keywords['date']}_{platform}_{keywords['tenant_id']}_{keywords['topic_id']}"
+            result_key = {
+                "id": document_id,
+                "date": keywords['date'],
+                "type": platform,
+                "tenant_id": keywords['tenant_id'],
+                "topic_id":keywords['topic_id'],
+                "keywords_trend": final_keywords
+            }
+            arr_key_trend.append(result_key)
 
-                if final_keywords:
-                    if tenancy_id not in results_by_tenancy:
-                        results_by_tenancy[tenancy_id] = {}
-                    results_by_tenancy[tenancy_id][topic_id] = final_keywords
 
     else:
         last_day_data = daily_keywords[-1] if daily_keywords else {}

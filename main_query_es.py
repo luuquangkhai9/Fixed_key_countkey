@@ -399,28 +399,3 @@ def query_keyword_with_trend(es,INDEX, body):
 
 #         return []
 
-if __name__ == '__main__':
-    # start_date = "02-01-2024"
-    # end_date = "02-25-2024"
-    # start_date = datetime.strptime(start_date, "%m-%d-%Y")
-    # end_date = datetime.strptime(end_date, "%m-%d-%Y")
-    # start_date_str = start_date.strftime("%m/%d/%Y 00:00:01")
-    # end_date_str = end_date.strftime("%m/%d/%Y 00:00:00")
-
-    # query_day(start_date_str, end_date_str)
-    
-    start_date = "05-24-2025"
-    end_date = "05-26-2025"
-    start_date = datetime.strptime(start_date, "%m-%d-%Y")
-    end_date = datetime.strptime(end_date, "%m-%d-%Y")
-    start_date_str = start_date.strftime("%m/%d/%Y 00:00:01")
-    end_date_str = end_date.strftime("%m/%d/%Y 15:59:59")
-    # query_day_3(start_date_str , end_date_str)
-    # query_comment_by_dates(start_date ,end_date )
-    # combined_queries(start_date, end_date)
-    query_data_file = ''
-    start_time = time.time()
-    query_keyword_with_topic(es, start_date_str ,end_date_str , "youtube", "content_test_newquery_filter_ytb.json")
-    end_time = time.time()
-    print( start_time - end_time)
-    

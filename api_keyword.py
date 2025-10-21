@@ -884,4 +884,5 @@ async def search_hashtag(request: SearchRequesthastag, response: Response):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=55555)
+    # uvicorn.run(app, host="0.0.0.0", port=55555)
+    uvicorn.run(app, host="localhost", port=55555)

@@ -306,13 +306,13 @@ def summarize_keywords_in_intervals(type ,  old_extracted_keywords):
                                                                       
         
 def run_keyword_today():
-    current_day = datetime.now()-timedelta(days = 7)
+    current_day = datetime.now()-timedelta(days = 1)
     #current_day = datetime.now()
 
     global restart_needed  # Sử dụng biến toàn cục
     #testdebug
-    collections = ['facebook', 'tiktok', 'youtube', 'voz', 'xamvn', 'otofun', 'media', 'reddit']
-    #collections = ['tiktok','media']
+    collections = ['facebook', 'tiktok', 'youtube', 'forums', 'media']
+    #collections = ['forums']
 
     # query_data_files = [query_data_file_fb, query_data_file_tik, query_data_file_ytb, query_data_file_voz, query_data_file_xamvn, query_data_file_oto, query_data_file_media]
     #top_keywords_summarys = [top_keywords_summary_fb, top_keywords_summary_tik, top_keywords_summary_ytb, top_keywords_summary_voz, top_keywords_summary_xamvn, top_keywords_summary_oto, top_keywords_summary_media, top_keywords_summary_reddit]

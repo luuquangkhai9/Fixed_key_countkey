@@ -285,7 +285,14 @@ if __name__ == "__main__":
 #testdebug
 #   cache_process = Process(target=periodic_cache_update)
 #    update_process = Process(target=schedule_update)
-    periodic_cache_update()
+
+
+
+    #periodic_cache_update()
+
+
+
+    
 #    cache_process.start()
 #    update_process.start()
 
